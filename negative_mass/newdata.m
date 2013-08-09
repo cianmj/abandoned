@@ -1,0 +1,26 @@
+clear all
+importfile('absw.txt');
+importfile('nwav_sum.txt');
+importfile('absw2.txt');
+importfile('nwav_sum2.txt');
+x=absw(1:end,1);
+y=absw(1:end,2);
+z=absw(1:end,3);
+zlog=absw(1:end,4);
+z2=absw2(1:end,3);
+zlog2=absw2(1:end,4);
+zr=nwav_sum(1:end,3);
+zi=nwav_sum(1:end,4);
+zr2=nwav_sum2(1:end,3);
+zi2=nwav_sum2(1:end,4);
+xlin=linspace(min(x),max(x),1000);
+ylin=linspace(min(y),max(y),1000);
+[X,Y]=meshgrid(xlin,ylin);
+Z = griddata(x,y,z,X,Y,'cubic');
+Zlog = griddata(x,y,zlog,X,Y,'cubic');
+Zr = griddata(x,y,zr,X,Y,'cubic');
+Zi = griddata(x,y,zi,X,Y,'cubic');
+Z2 = griddata(x,y,z2,X,Y,'cubic');
+Zlog2 = griddata(x,y,zlog2,X,Y,'cubic');
+Zr2 = griddata(x,y,zr2,X,Y,'cubic');
+Zi2 = griddata(x,y,zi2,X,Y,'cubic');
